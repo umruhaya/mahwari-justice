@@ -8,6 +8,7 @@ import Projects from '../components/Projects.tsx';
 import Team from '../components/Team.tsx';
 import Donate from '../components/Donate.tsx';
 import Footer from '../components/Footer.tsx';
+import MediaCoverage from '../components/MediaCoverage.tsx';
 
 // SEO data for the homepage
 const pageTitle = "Mahwari Justice - Ensuring Access to Safe Periods for All in Pakistan";
@@ -88,6 +89,9 @@ const homepageStructuredData = {
 			
 			<!-- Projects Section -->
 			<Projects client:load />
+
+			<!-- Media Coverage Section -->
+			<MediaCoverage client:load />
 			
 			<!-- Team Section -->
 			<Team client:load />
