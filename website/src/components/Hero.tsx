@@ -1,5 +1,6 @@
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
+import VideoPlayer from './VideoPlayer'
 
 export default function Hero() {
 	return (
@@ -38,33 +39,34 @@ export default function Hero() {
 
 						{/* CTA Buttons */}
 						<div className='flex flex-col sm:flex-row gap-4'>
-							<Button size='lg' className='bg-primary hover:bg-primary/90'>
-								Support Our Mission
+							<Button size='lg' className='bg-primary hover:bg-primary/90' asChild>
+								<a href='#donate'>Support Our Mission</a>
 							</Button>
-							<Button size='lg' variant='outline'>
+							<Button
+								size='lg'
+								variant='outline'
+								onClick={() => {
+									const videoElement = document.querySelector('[data-video-player]')
+									if (videoElement) {
+										videoElement.scrollIntoView({ behavior: 'smooth' })
+										// Trigger video play
+										const playButton = videoElement.querySelector('[role="button"]') as HTMLElement
+										if (playButton) playButton.click()
+									}
+								}}
+							>
 								Watch Our Story
 							</Button>
 						</div>
 					</div>
 
-					{/* Video/Image placeholder */}
-					<div className='relative'>
-						<div className='aspect-video bg-muted rounded-lg overflow-hidden'>
-							<div className='flex items-center justify-center h-full text-muted-foreground'>
-								<div className='text-center space-y-2'>
-									<div className='w-16 h-16 bg-primary/20 rounded-full mx-auto flex items-center justify-center'>
-										<svg className='w-8 h-8 text-primary' fill='currentColor' viewBox='0 0 24 24'>
-											<path d='M8 5v14l11-7z' />
-										</svg>
-									</div>
-									<p className='text-sm font-medium'>6-minute Impact Documentary</p>
-									<p className='text-xs'>Click to watch our story</p>
-								</div>
-							</div>
-						</div>
-						{/* Decorative elements */}
-						<div className='absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-xl' />
-						<div className='absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-full blur-xl' />
+					{/* Video Player */}
+					<div className='relative' data-video-player>
+						<VideoPlayer
+							videoUrl='https://cdn.mahwarijustice.org/impact-of-mahwari-justice.webm'
+							title='6-minute Impact Documentary'
+							description="See how we're creating change across Pakistan"
+						/>
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
+import ComicViewer from './ComicViewer'
 
 export default function Projects() {
 	const projects = [
@@ -89,71 +90,73 @@ export default function Projects() {
 									</div>
 
 									{project.id === 'comics' && (
-										<Button className='bg-secondary hover:bg-secondary/90'>
-											Access Comic Books
-										</Button>
+										<div className='space-y-3'>
+											<Button className='bg-secondary hover:bg-secondary/90 mr-3' asChild>
+												<a
+													href='https://cdn.mahwarijustice.org/chandoo-and-the-crimson-quest-english.pdf'
+													target='_blank'
+													rel='noopener noreferrer'
+												>
+													Access Comic Books
+												</a>
+											</Button>
+											<Button variant='outline' asChild>
+												<a href='/comics/english' target='_blank' rel='noopener noreferrer'>
+													Page by Page View
+												</a>
+											</Button>
+										</div>
 									)}
 								</div>
 
-								{/* Image/Visual */}
+								{/* Visual Content */}
 								<div className='relative'>
-									<Card className='overflow-hidden'>
-										<div className='aspect-video bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10'>
-											<div className='flex items-center justify-center h-full text-muted-foreground'>
-												<div className='text-center space-y-2'>
-													<div className='w-20 h-20 bg-primary/20 rounded-full mx-auto flex items-center justify-center'>
-														{project.id === 'padcraft' && (
-															<svg
-																className='w-10 h-10 text-primary'
-																fill='none'
-																stroke='currentColor'
-																viewBox='0 0 24 24'
-															>
-																<path
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	strokeWidth={2}
-																	d='M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10'
-																/>
-															</svg>
-														)}
-														{project.id === 'workshops' && (
-															<svg
-																className='w-10 h-10 text-primary'
-																fill='none'
-																stroke='currentColor'
-																viewBox='0 0 24 24'
-															>
-																<path
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	strokeWidth={2}
-																	d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
-																/>
-															</svg>
-														)}
-														{project.id === 'comics' && (
-															<svg
-																className='w-10 h-10 text-primary'
-																fill='none'
-																stroke='currentColor'
-																viewBox='0 0 24 24'
-															>
-																<path
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	strokeWidth={2}
-																	d='M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 3v10a1 1 0 001 1h8a1 1 0 001-1V7M7 7h10M9 11h6M9 15h6'
-																/>
-															</svg>
-														)}
+									{project.id === 'comics'
+										? <ComicViewer showAll={false} />
+										: (
+											<Card className='overflow-hidden'>
+												<div className='aspect-video bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10'>
+													<div className='flex items-center justify-center h-full text-muted-foreground'>
+														<div className='text-center space-y-2'>
+															<div className='w-20 h-20 bg-primary/20 rounded-full mx-auto flex items-center justify-center'>
+																{project.id === 'padcraft' && (
+																	<svg
+																		className='w-10 h-10 text-primary'
+																		fill='none'
+																		stroke='currentColor'
+																		viewBox='0 0 24 24'
+																	>
+																		<path
+																			strokeLinecap='round'
+																			strokeLinejoin='round'
+																			strokeWidth={2}
+																			d='M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10'
+																		/>
+																	</svg>
+																)}
+																{project.id === 'workshops' && (
+																	<svg
+																		className='w-10 h-10 text-primary'
+																		fill='none'
+																		stroke='currentColor'
+																		viewBox='0 0 24 24'
+																	>
+																		<path
+																			strokeLinecap='round'
+																			strokeLinejoin='round'
+																			strokeWidth={2}
+																			d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
+																		/>
+																	</svg>
+																)}
+															</div>
+															<p className='text-sm font-medium'>{project.title}</p>
+															<p className='text-xs'>Visual content placeholder</p>
+														</div>
 													</div>
-													<p className='text-sm font-medium'>{project.title}</p>
-													<p className='text-xs'>Visual content placeholder</p>
 												</div>
-											</div>
-										</div>
-									</Card>
+											</Card>
+										)}
 								</div>
 							</div>
 						</TabsContent>

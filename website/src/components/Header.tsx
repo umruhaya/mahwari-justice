@@ -20,6 +20,7 @@ export default function Header() {
 			label: 'Projects',
 			ariaLabel: 'Explore our projects including PadCraft and educational workshops',
 		},
+		{ href: '/comics', label: 'Comics', ariaLabel: 'Read our comic books' },
 		{ href: '#team', label: 'Team', ariaLabel: 'Meet our team members and founders' },
 		{ href: '#contact', label: 'Contact', ariaLabel: 'Contact Mahwari Justice and get in touch' },
 	]

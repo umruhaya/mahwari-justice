@@ -33,6 +33,23 @@ export default function Footer() {
 		{ name: 'Donate', href: '#donate' },
 	]
 
+	const handleComicsClick = () => {
+		// Open the English comic PDF
+		window.open('https://cdn.mahwarijustice.org/chandoo-and-the-crimson-quest-english.pdf', '_blank')
+	}
+
+	const handleVideoClick = () => {
+		// Scroll to hero section and trigger video
+		const heroSection = document.querySelector('[data-video-player]')
+		if (heroSection) {
+			heroSection.scrollIntoView({ behavior: 'smooth' })
+			setTimeout(() => {
+				const playButton = heroSection.querySelector('[role="button"]') as HTMLElement
+				if (playButton) playButton.click()
+			}, 500)
+		}
+	}
+
 	return (
 		<footer className='bg-muted/50 border-t'>
 			<div className='container max-w-screen-xl mx-auto px-4 py-16'>
@@ -49,7 +66,7 @@ export default function Footer() {
 						</p>
 						<div className='space-y-2 text-sm'>
 							<p className='text-muted-foreground'>
-								<strong>Email:</strong> mahwarijustice@gmail.com
+								<strong>Email:</strong> contact@mahwarijustice.com
 							</p>
 						</div>
 					</div>
@@ -98,7 +115,7 @@ export default function Footer() {
 								<p className='text-xs text-muted-foreground mb-2'>
 									"Chandoo and the Crimson Quest" in 3 languages
 								</p>
-								<Button variant='outline' size='sm' className='text-xs'>
+								<Button variant='outline' size='sm' className='text-xs' onClick={handleComicsClick}>
 									Access Comics
 								</Button>
 							</div>
@@ -107,7 +124,7 @@ export default function Footer() {
 								<p className='text-xs text-muted-foreground mb-2'>
 									6-minute video showcasing our work
 								</p>
-								<Button variant='outline' size='sm' className='text-xs'>
+								<Button variant='outline' size='sm' className='text-xs' onClick={handleVideoClick}>
 									Watch Video
 								</Button>
 							</div>
@@ -120,7 +137,8 @@ export default function Footer() {
 				{/* Bottom section */}
 				<div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
 					<div className='text-sm text-muted-foreground'>
-						© 2024 Mahwari Justice. All rights reserved. Period rights are human rights.
+						© {new Date().getFullYear()}{' '}
+						Mahwari Justice. All rights reserved. Period rights are human rights.
 					</div>
 					<div className='flex items-center space-x-4 text-sm'>
 						<span className='text-muted-foreground'>Made with ❤️ for period equity</span>

@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ComicPageViewer from '../../components/ComicPageViewer.tsx';
+
+export async function getStaticPaths() {
+  return [
+    { params: { language: 'english' } },
+    { params: { language: 'urdu' } },
+    { params: { language: 'sindhi' } }
+  ];
+}
+
+const { language } = Astro.params;
+
+const comicData = {
+  english: {
+    title: 'Chandoo and the Crimson Quest - English',
+    language: 'English',
+    description: "Pakistan's first superhero comic book on periods in English"
+  },
+  urdu: {
+    title: 'چاندو اور سرخ جستجو - Urdu',
+    language: 'Urdu', 
+    description: "Pakistan's first superhero comic book on periods in Urdu"
+  },
+  sindhi: {
+    title: 'چاندو ۽ ڳاڙهي ڳولا - Sindhi',
+    language: 'Sindhi',
+    description: "Pakistan's first superhero comic book on periods in Sindhi"
+  }
+};
+
+const comic = comicData[language as keyof typeof comicData];
+---
+
+<Layout 
+  title={comic.title}
+  description={comic.description}
+  canonicalUrl={`https://mahwarijustice.org/comics/${language}`}
+>
+  <div class="min-h-screen bg-background">
+    <ComicPageViewer client:load language={language} />
+  </div>
+</Layout> 
