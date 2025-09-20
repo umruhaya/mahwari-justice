@@ -1,5 +1,6 @@
 ---
 import '~/styles/global.css';
+import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.tsx';
 import Hero from '../components/Hero.tsx';
 import About from '../components/About.tsx';
@@ -8,58 +9,95 @@ import Projects from '../components/Projects.tsx';
 import Team from '../components/Team.tsx';
 import Donate from '../components/Donate.tsx';
 import Footer from '../components/Footer.tsx';
+
+// SEO data for the homepage
+const pageTitle = "Mahwari Justice - Ensuring Access to Safe Periods for All in Pakistan";
+const pageDescription = "Mahwari Justice is a grassroots student-led organization providing menstrual health products, education, and advocacy, especially during disasters and emergencies in Pakistan.";
+const pageKeywords = "period rights Pakistan, menstrual health Pakistan, period poverty, women's rights Pakistan, humanitarian aid, menstrual hygiene management, disaster relief Pakistan, menstrual equity, period products Pakistan, Diana Award 2024";
+
+// Additional structured data for homepage
+const homepageStructuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "NonprofitOrganization",
+			"@id": "https://mahwarijustice.org/#organization",
+			"name": "Mahwari Justice",
+			"url": "https://mahwarijustice.org",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://mahwarijustice.org/mj-logo.png",
+				"width": 400,
+				"height": 400
+			},
+			"description": "Grassroots student-led organization providing menstrual health products, education, and advocacy in Pakistan",
+			"foundingDate": "2022",
+			"mission": "Ensuring access to safe periods, especially during disasters and emergencies",
+			"areaServed": {
+				"@type": "Country",
+				"name": "Pakistan"
+			},
+			"sameAs": [
+				"https://x.com/mahwarijustice",
+				"https://www.facebook.com/p/Mahwari-Justice-100084051635594",
+				"https://www.instagram.com/mahwarijusticeofficial",
+				"https://www.linkedin.com/company/mahwari-justice"
+			],
+			"award": [
+				"Diana Award 2024",
+				"Women's Leadership Award 2023",
+				"Global Youth Champion Award 2023",
+				"50 Leading Lights Asia-Pacific 2023"
+			]
+		},
+		{
+			"@type": "WebSite",
+			"@id": "https://mahwarijustice.org/#website",
+			"url": "https://mahwarijustice.org",
+			"name": "Mahwari Justice",
+			"description": "Period rights are human rights. Supporting menstrual equity across Pakistan.",
+			"publisher": {
+				"@id": "https://mahwarijustice.org/#organization"
+			},
+			"inLanguage": "en-US"
+		}
+	]
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mahwari Justice - Ensuring Access to Safe Periods for All</title>
-		<meta name="description" content="Mahwari Justice is a grassroots student-led organization providing menstrual health products, education, and advocacy, especially during disasters and emergencies." />
-		<meta name="keywords" content="period rights, menstrual health, Pakistan, period poverty, women's rights, humanitarian aid" />
+<Layout 
+	title={pageTitle}
+	description={pageDescription}
+	keywords={pageKeywords}
+	canonicalUrl="https://mahwarijustice.org"
+	structuredData={homepageStructuredData}
+>
+	<div id="app" class="min-h-screen">
+		<!-- Header -->
+		<Header client:load />
 		
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Mahwari Justice - Period Rights are Human Rights" />
-		<meta property="og:description" content="Supporting menstrual equity across Pakistan through education, advocacy, and emergency relief." />
-		<meta property="og:image" content="/mj-logo.png" />
+		<!-- Main Content -->
+		<main role="main">
+			<!-- Hero Section -->
+			<Hero client:load />
+			
+			<!-- About Section -->
+			<About client:load />
+			
+			<!-- Impact Section -->
+			<Impact client:load />
+			
+			<!-- Projects Section -->
+			<Projects client:load />
+			
+			<!-- Team Section -->
+			<Team client:load />
+			
+			<!-- Donate Section -->
+			<Donate client:load />
+		</main>
 		
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:title" content="Mahwari Justice - Period Rights are Human Rights" />
-		<meta property="twitter:description" content="Supporting menstrual equity across Pakistan through education, advocacy, and emergency relief." />
-		<meta property="twitter:image" content="/mj-logo.png" />
-	</head>
-	<body>
-		<div id="app" class="min-h-screen">
-			<!-- Header -->
-			<Header client:load />
-			
-			<!-- Main Content -->
-			<main>
-				<!-- Hero Section -->
-				<Hero client:load />
-				
-				<!-- About Section -->
-				<About client:load />
-				
-				<!-- Impact Section -->
-				<Impact client:load />
-				
-				<!-- Projects Section -->
-				<Projects client:load />
-				
-				<!-- Team Section -->
-				<Team client:load />
-				
-				<!-- Donate Section -->
-				<Donate client:load />
-			</main>
-			
-			<!-- Footer -->
-			<Footer client:load />
-		</div>
-	</body>
-</html>
+		<!-- Footer -->
+		<Footer client:load />
+	</div>
+</Layout>

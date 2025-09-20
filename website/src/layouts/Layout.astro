@@ -1,0 +1,161 @@
+---
+export interface Props {
+	title?: string;
+	description?: string;
+	keywords?: string;
+	ogImage?: string;
+	canonicalUrl?: string;
+	structuredData?: object;
+	noIndex?: boolean;
+}
+
+const {
+	title = "Mahwari Justice - Ensuring Access to Safe Periods for All in Pakistan",
+	description = "Mahwari Justice is a grassroots student-led organization providing menstrual health products, education, and advocacy, especially during disasters and emergencies in Pakistan.",
+	keywords = "period rights, menstrual health, Pakistan, period poverty, women's rights, humanitarian aid, menstrual hygiene management, period products Pakistan, menstrual equity, disaster relief Pakistan",
+	ogImage = "https://mahwarijustice.org/mj-logo.png",
+	canonicalUrl = "https://mahwarijustice.org",
+	structuredData = {},
+	noIndex = false
+} = Astro.props;
+
+// Default structured data for the organization
+const defaultStructuredData = {
+	"@context": "https://schema.org",
+	"@type": "NonprofitOrganization",
+	"name": "Mahwari Justice",
+	"description": "Grassroots student-led organization providing menstrual health products, education, and advocacy in Pakistan",
+	"url": "https://mahwarijustice.org",
+	"logo": "https://mahwarijustice.org/mj-logo.png",
+	"sameAs": [
+		"https://x.com/mahwarijustice",
+		"https://www.facebook.com/p/Mahwari-Justice-100084051635594",
+		"https://www.instagram.com/mahwarijusticeofficial",
+		"https://www.linkedin.com/company/mahwari-justice"
+	],
+	"address": {
+		"@type": "PostalAddress",
+		"addressCountry": "PK"
+	},
+	"foundingDate": "2022",
+	"mission": "Ensuring access to safe periods, especially during disasters and emergencies",
+	"areaServed": {
+		"@type": "Country",
+		"name": "Pakistan"
+	}
+};
+
+// FAQ Schema for better SERP features
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [{
+		"@type": "Question",
+		"name": "What is period poverty?",
+		"acceptedAnswer": {
+			"@type": "Answer",
+			"text": "Period poverty refers to the lack of access to menstrual products, education, hygiene facilities, waste management, or a combination of these. In Pakistan, millions of women and girls face this challenge daily."
+		}
+	}, {
+		"@type": "Question",
+		"name": "How does Mahwari Justice help during disasters?",
+		"acceptedAnswer": {
+			"@type": "Answer",
+			"text": "We provide emergency menstrual health kits, establish safe spaces, and conduct awareness sessions in disaster-affected areas across Pakistan. During the 2022 floods, we distributed over 150,000 relief kits."
+		}
+	}, {
+		"@type": "Question",
+		"name": "What is included in a menstrual health kit?",
+		"acceptedAnswer": {
+			"@type": "Answer",
+			"text": "Each kit includes sanitary pads, underwear, soap, detergent, and educational materials explaining proper menstrual hygiene practices."
+		}
+	}]
+};
+
+// Merge provided structured data with defaults
+const finalStructuredData = Object.keys(structuredData).length > 0 ? structuredData : defaultStructuredData;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalUrl} />
+		
+		<!-- Language Alternates -->
+		<link rel="alternate" hreflang="en" href="https://mahwarijustice.org" />
+		<link rel="alternate" hreflang="ur" href="https://mahwarijustice.org/ur" />
+		<link rel="alternate" hreflang="x-default" href="https://mahwarijustice.org" />
+		
+		<!-- Extended Keywords -->
+		<meta name="keywords" content={keywords} />
+		
+		<!-- Author and Copyright -->
+		<meta name="author" content="Mahwari Justice Organization" />
+		<meta name="copyright" content="Mahwari Justice" />
+		
+		<!-- Robots -->
+		<meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+		
+		<!-- Theme -->
+		<meta name="theme-color" content="#DC2626" />
+		<meta name="color-scheme" content="light" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Mahwari Justice Logo - Period Rights are Human Rights" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:site_name" content="Mahwari Justice" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalUrl} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={ogImage} />
+		<meta property="twitter:site" content="@mahwarijustice" />
+		<meta property="twitter:creator" content="@mahwarijustice" />
+		
+		<!-- Apple Touch Icon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/mj-logo.png" />
+		
+		<!-- Sitemap -->
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+		
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+		
+		<!-- Preload critical resources -->
+		<link rel="preload" href="/mj-logo.png" as="image" />
+		
+		<!-- Performance hints -->
+		<meta http-equiv="x-dns-prefetch-control" content="on" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html> 
