@@ -51,9 +51,6 @@ export default function Footer() {
 							<p className='text-muted-foreground'>
 								<strong>Email:</strong> mahwarijustice@gmail.com
 							</p>
-							<p className='text-muted-foreground'>
-								<strong>Phone:</strong> +92 301 5135252
-							</p>
 						</div>
 					</div>
 
