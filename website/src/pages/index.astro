@@ -1,5 +1,13 @@
 ---
-
+import '~/styles/global.css';
+import Header from '../components/Header.tsx';
+import Hero from '../components/Hero.tsx';
+import About from '../components/About.tsx';
+import Impact from '../components/Impact.tsx';
+import Projects from '../components/Projects.tsx';
+import Team from '../components/Team.tsx';
+import Donate from '../components/Donate.tsx';
+import Footer from '../components/Footer.tsx';
 ---
 
 <html lang="en">
@@ -8,9 +16,50 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Mahwari Justice - Ensuring Access to Safe Periods for All</title>
+		<meta name="description" content="Mahwari Justice is a grassroots student-led organization providing menstrual health products, education, and advocacy, especially during disasters and emergencies." />
+		<meta name="keywords" content="period rights, menstrual health, Pakistan, period poverty, women's rights, humanitarian aid" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Mahwari Justice - Period Rights are Human Rights" />
+		<meta property="og:description" content="Supporting menstrual equity across Pakistan through education, advocacy, and emergency relief." />
+		<meta property="og:image" content="/mj-logo.png" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content="Mahwari Justice - Period Rights are Human Rights" />
+		<meta property="twitter:description" content="Supporting menstrual equity across Pakistan through education, advocacy, and emergency relief." />
+		<meta property="twitter:image" content="/mj-logo.png" />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div id="app" class="min-h-screen">
+			<!-- Header -->
+			<Header client:load />
+			
+			<!-- Main Content -->
+			<main>
+				<!-- Hero Section -->
+				<Hero client:load />
+				
+				<!-- About Section -->
+				<About client:load />
+				
+				<!-- Impact Section -->
+				<Impact client:load />
+				
+				<!-- Projects Section -->
+				<Projects client:load />
+				
+				<!-- Team Section -->
+				<Team client:load />
+				
+				<!-- Donate Section -->
+				<Donate client:load />
+			</main>
+			
+			<!-- Footer -->
+			<Footer client:load />
+		</div>
 	</body>
 </html>
