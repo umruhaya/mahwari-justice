@@ -33,16 +33,18 @@ export const Member = ({ member }: { member: CollectionEntry<'member'>['data'] }
 				</div>
 
 				{/* Achievements */}
-				<div className='space-y-3'>
-					<h4 className='text-sm font-semibold'>Key Contributions:</h4>
-					<div className='flex flex-wrap gap-2 justify-center'>
-						{member.contributions?.map((contribution, idx) => (
-							<Badge key={idx} variant='secondary' className='text-xs'>
-								{contribution}
-							</Badge>
-						))}
+				{member.contributions && (
+					<div className='space-y-3'>
+						<h4 className='text-sm font-semibold'>Key Contributions:</h4>
+						<div className='flex flex-wrap gap-2 justify-center'>
+							{member.contributions.map((contribution, idx) => (
+								<Badge key={idx} variant='secondary' className='text-xs'>
+									{contribution}
+								</Badge>
+							))}
+						</div>
 					</div>
-				</div>
+				)}
 			</CardContent>
 		</Card>
 	)
