@@ -4,6 +4,9 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import type { CollectionEntry } from 'astro:content'
 
 export const Member = ({ member }: { member: CollectionEntry<'member'>['data'] }) => {
+	const initialsDefault = member.name.split(/\s+/g).map((name) => name[0]).slice(0, 2).join('').toUpperCase()
+	const initialsFallback = member.name.slice(0, 2).toUpperCase()
+	const initials = initialsDefault.length < 2 ? initialsFallback : initialsDefault
 	return (
 		<Card key={member.id} className='text-center hover:shadow-lg transition-shadow group'>
 			<CardContent className='p-8 space-y-6'>
@@ -12,7 +15,7 @@ export const Member = ({ member }: { member: CollectionEntry<'member'>['data'] }
 					<Avatar className='w-24 h-24 mx-auto ring-4 ring-primary/10 group-hover:ring-primary/20 transition-all'>
 						<AvatarImage src={member.profileImageUrl ?? ''} alt={member.name} />
 						<AvatarFallback className='text-xl font-bold bg-primary/10 text-primary'>
-							{member.name.slice(0, 2)}
+							{initials}
 						</AvatarFallback>
 					</Avatar>
 				</div>
