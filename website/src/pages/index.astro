@@ -1,14 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.tsx';
-import Hero from '../components/Hero.tsx';
-import About from '../components/About.tsx';
-import Impact from '../components/Impact.tsx';
-import Projects from '../components/Projects.tsx';
-import Team from '../components/Team.tsx';
-import Donate from '../components/Donate.tsx';
-import Footer from '../components/Footer.tsx';
-import MediaCoverage from '../components/MediaCoverage.tsx';
+import Layout from '~/layouts/Layout.astro';
+import Header from '~/components/Header.tsx';
+import Hero from '~/components/Hero.tsx';
+import About from '~/components/About.tsx';
+import Impact from '~/components/Impact.tsx';
+import Projects from '~/components/Projects.tsx';
+import Team from '~/components/Team.tsx';
+import Donate from '~/components/Donate.tsx';
+import Footer from '~/components/Footer.tsx';
+import MediaCoverage from '~/components/MediaCoverage.tsx';
+import { getCollection } from 'astro:content';
 
 // SEO data for the homepage
 const pageTitle = "Mahwari Justice - Ensuring Access to Safe Periods for All in Pakistan";
@@ -63,6 +64,8 @@ const homepageStructuredData = {
 		}
 	]
 };
+
+const members = await getCollection('member').then(members => members.map(member => member.data))
 ---
 
 <Layout 
@@ -94,7 +97,7 @@ const homepageStructuredData = {
 			<MediaCoverage client:load />
 			
 			<!-- Team Section -->
-			<Team client:load />
+			<Team members={members} client:load />
 			
 			<!-- Donate Section -->
 			<Donate client:load />

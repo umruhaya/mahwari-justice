@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
+import { defineConfig, envField } from 'astro/config'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap'
@@ -18,6 +18,8 @@ export default defineConfig({
 					ur: 'ur-PK',
 				},
 			},
+			// skip preview pages
+			filter: page => page.includes('/preview/') === false,
 		}),
 		compress({
 			HTML: true,
@@ -27,6 +29,13 @@ export default defineConfig({
 			SVG: true,
 		}),
 	],
+	env: {
+		schema: {
+			CONTENTFUL_SPACE_ID: envField.string({ context: 'client', access: 'public' }),
+			CONTENTFUL_DELIVERY_ACCESS_TOKEN: envField.string({ context: 'client', access: 'public' }),
+			CONTENTFUL_PREVIEW_ACCESS_TOKEN: envField.string({ context: 'client', access: 'public' }),
+		},
+	},
 	output: 'static',
 	build: {
 		inlineStylesheets: 'auto',

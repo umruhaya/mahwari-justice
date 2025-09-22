@@ -1,34 +1,16 @@
-import { Card, CardContent } from './ui/card'
-import { Badge } from './ui/badge'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { Badge } from '~/components/ui/badge'
+import { Member } from '~/components/Member'
+import type { CollectionEntry } from 'astro:content'
+import { getMembers } from '~/loaders/member'
+import { useQuery } from '@tanstack/react-query'
+import { queryClient } from '~/lib/query-client'
 
-export default function Team() {
-	const teamMembers = [
-		{
-			name: 'Bushra Mahnoor',
-			role: 'Founder and Director',
-			description:
-				"Period Rights Activist leading the charge for menstrual equity in Pakistan. Author of Pakistan's first superhero comic book on periods.",
-			initials: 'BM',
-			achievements: ['Diana Award (2024)', '50 Leading Lights Asia-Pacific', "Women's Leadership Award"],
-		},
-		{
-			name: 'Anum Khalid',
-			role: 'Co-Founder',
-			description:
-				'Co-leading Mahwari Justice with a focus on community outreach and volunteer coordination during emergency relief efforts.',
-			initials: 'AK',
-			achievements: ['Volunteer Coordination', 'Community Outreach', 'Emergency Relief'],
-		},
-		{
-			name: 'Raiha Zainab Shah',
-			role: 'Program Associate',
-			description:
-				'Managing educational programs and policy advocacy initiatives to break period taboos through innovative approaches.',
-			initials: 'RZ',
-			achievements: ['Program Management', 'Policy Advocacy', 'Educational Initiatives'],
-		},
-	]
+export default function Team({ members: initialMembers }: { members: CollectionEntry<'member'>['data'][] }) {
+	const { data: members } = useQuery({
+		queryKey: ['members'],
+		queryFn: () => getMembers(),
+		initialData: initialMembers,
+	}, queryClient)
 
 	return (
 		<section id='team' className='py-20 px-4 bg-muted/30'>
@@ -45,45 +27,7 @@ export default function Team() {
 				</div>
 
 				<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{teamMembers.map((member, index) => (
-						<Card key={index} className='text-center hover:shadow-lg transition-shadow group'>
-							<CardContent className='p-8 space-y-6'>
-								{/* Avatar */}
-								<div className='relative mx-auto w-fit'>
-									<Avatar className='w-24 h-24 mx-auto ring-4 ring-primary/10 group-hover:ring-primary/20 transition-all'>
-										<AvatarImage src='' alt={member.name} />
-										<AvatarFallback className='text-xl font-bold bg-primary/10 text-primary'>
-											{member.initials}
-										</AvatarFallback>
-									</Avatar>
-								</div>
-
-								{/* Info */}
-								<div className='space-y-3'>
-									<div>
-										<h3 className='text-xl font-bold'>{member.name}</h3>
-										<p className='text-primary font-medium'>{member.role}</p>
-									</div>
-
-									<p className='text-muted-foreground text-sm leading-relaxed'>
-										{member.description}
-									</p>
-								</div>
-
-								{/* Achievements */}
-								<div className='space-y-3'>
-									<h4 className='text-sm font-semibold'>Key Contributions:</h4>
-									<div className='flex flex-wrap gap-2 justify-center'>
-										{member.achievements.map((achievement, idx) => (
-											<Badge key={idx} variant='secondary' className='text-xs'>
-												{achievement}
-											</Badge>
-										))}
-									</div>
-								</div>
-							</CardContent>
-						</Card>
-					))}
+					{members.map((member) => <Member key={member.id} member={member} />)}
 				</div>
 
 				{/* Call to action */}
