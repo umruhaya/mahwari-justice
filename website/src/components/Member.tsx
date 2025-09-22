@@ -13,7 +13,7 @@ export const Member = ({ member }: { member: CollectionEntry<'member'>['data'] }
 				{/* Avatar */}
 				<div className='relative mx-auto w-fit'>
 					<Avatar className='w-24 h-24 mx-auto ring-4 ring-primary/10 group-hover:ring-primary/20 transition-all'>
-						<AvatarImage src={member.profileImageUrl ?? ''} alt={member.name} />
+						<AvatarImage src={`${member.profileImageUrl}?w=400&h=400`} alt={member.name} />
 						<AvatarFallback className='text-xl font-bold bg-primary/10 text-primary'>
 							{initials}
 						</AvatarFallback>
