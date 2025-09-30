@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Locations from '../components/Locations';
+// SEO
+const pageTitle = 'All Locations - Mahwari Justice';
+const pageDescription = 'Explore all our operational locations across Pakistan, grouped by province.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="min-h-screen py-20 px-4">
+    <div class="container max-w-6xl mx-auto">
+      <div class="text-center space-y-6 mb-16">
+        <h1 class="text-4xl md:text-6xl font-bold">Our Locations Across Pakistan</h1>
+        <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+          We operate in communities throughout the country, providing relief and education. Below is a complete list of our locations by province.
+        </p>
+      </div>
+
+      <Locations client:load />
+    </div>
+  </div>
+</Layout> 

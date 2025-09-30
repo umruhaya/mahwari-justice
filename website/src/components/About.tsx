@@ -86,7 +86,10 @@ export default function About() {
 							<Card key={sdg.number} className='text-center hover:shadow-lg transition-shadow'>
 								<CardContent className='p-6 space-y-4'>
 									<div className='w-16 h-16 bg-primary/10 rounded-full mx-auto flex items-center justify-center'>
-										<span className='text-2xl font-bold text-primary'>SDG {sdg.number}</span>
+										<span className='text-base font-bold text-primary'>
+											SDG<br />
+											{sdg.number}
+										</span>
 									</div>
 									<h4 className='font-semibold text-sm'>{sdg.title}</h4>
 								</CardContent>

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 import PakistanMap from './PakistanMap'
 
 export default function Impact() {
@@ -96,6 +97,14 @@ export default function Impact() {
 								<p className='text-sm text-muted-foreground text-center mt-4'>
 									Operating across major cities with a network of volunteers and partners
 								</p>
+								<div className='text-center mt-4'>
+									<a
+										href='/locations'
+										className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary bg-primary/10 hover:bg-primary/20 transition-colors'
+									>
+										View All Locations
+									</a>
+								</div>
 							</div>
 						</Card>
 					</div>
