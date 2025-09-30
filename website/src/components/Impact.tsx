@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
+import PakistanMap from './PakistanMap'
 
 export default function Impact() {
 	const impactStats = [
@@ -86,30 +87,15 @@ export default function Impact() {
 						</div>
 					</div>
 
-					{/* Image placeholder for awards/recognition */}
+					{/* Pakistan Map with locations */}
 					<div className='relative'>
-						<Card className='overflow-hidden'>
-							<div className='aspect-square bg-gradient-to-br from-secondary/10 to-primary/10'>
-								<div className='flex items-center justify-center h-full text-muted-foreground'>
-									<div className='text-center space-y-2'>
-										<div className='w-20 h-20 bg-secondary/20 rounded-full mx-auto flex items-center justify-center'>
-											<svg
-												className='w-10 h-10 text-secondary'
-												fill='none'
-												stroke='currentColor'
-												viewBox='0 0 24 24'
-											>
-												<path
-													strokeLinecap='round'
-													strokeLinejoin='round'
-													strokeWidth={2}
-													d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'
-												/>
-											</svg>
-										</div>
-										<p className='text-sm font-medium'>Awards & Recognition</p>
-									</div>
-								</div>
+						<Card className='overflow-hidden p-8'>
+							<div className='space-y-4'>
+								<h4 className='text-xl font-semibold text-center mb-6'>Our Nationwide Reach</h4>
+								<PakistanMap />
+								<p className='text-sm text-muted-foreground text-center mt-4'>
+									Operating across major cities with a network of volunteers and partners
+								</p>
 							</div>
 						</Card>
 					</div>
