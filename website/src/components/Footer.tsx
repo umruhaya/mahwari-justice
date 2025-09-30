@@ -66,7 +66,7 @@ export default function Footer() {
 						</p>
 						<div className='space-y-2 text-sm'>
 							<p className='text-muted-foreground'>
-								<strong>Email:</strong> contact@mahwarijustice.com
+								<strong>Email:</strong> contact@mahwarijustice.org
 							</p>
 						</div>
 					</div>

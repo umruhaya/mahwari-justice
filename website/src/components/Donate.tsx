@@ -11,11 +11,6 @@ export default function Donate() {
 			iban: 'PK46ABPA0010150551680016',
 			bank: 'Allied Bank Limited',
 		},
-		{
-			title: 'DASTAK Women Rights and Awareness Foundation',
-			iban: 'PK63FAYS3501301000000677',
-			bank: 'Faysal Bank Limited',
-		},
 	]
 
 	const internationalOptions = [

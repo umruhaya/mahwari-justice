@@ -9,6 +9,7 @@ import Team from '~/components/Team.tsx';
 import Donate from '~/components/Donate.tsx';
 import Footer from '~/components/Footer.tsx';
 import MediaCoverage from '~/components/MediaCoverage.tsx';
+import Petition from '~/components/Petition.tsx';
 import { getCollection } from 'astro:content';
 
 // SEO data for the homepage
@@ -83,6 +84,9 @@ const members = await getCollection('member').then(members => members.map(member
 		<main role="main">
 			<!-- Hero Section -->
 			<Hero client:load />
+			
+			<!-- Petition Section -->
+			<Petition client:load />
 			
 			<!-- About Section -->
 			<About client:load />
