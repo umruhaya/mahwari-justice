@@ -40,6 +40,23 @@ interface PakistanMapProps {
 const defaultCities: CityLocation[] = [
 	{ name: 'Karachi', x: 41, y: 87, description: 'Relief distribution hub' },
 	{ name: 'Lahore', x: 78, y: 42, description: 'Educational workshops' },
+	{ name: 'Ghizer', x: 70, y: 5, description: 'Flood relief area' },
+	{ name: 'Gilgit', x: 75, y: 7, description: 'Flood relief area' },
+	{ name: 'AliPur', x: 62, y: 57, description: 'Flood relief area' },
+	{ name: 'Buner', x: 70, y: 18, description: 'Flood relief area' },
+	{ name: 'Chiniot', x: 72, y: 38, description: 'Flood relief area' },
+	{ name: 'Gujrat', x: 74, y: 28, description: 'Flood relief area' },
+	{ name: 'Jhang', x: 70, y: 42, description: 'Flood relief area' },
+	{ name: 'Mingora', x: 73, y: 15, description: 'Flood relief area' },
+	{ name: 'Multan', x: 67, y: 52, description: 'Flood relief area' },
+	{ name: 'Muzafargarh', x: 64, y: 55, description: 'Flood relief area' },
+	{ name: 'Pakpattan', x: 73, y: 48, description: 'Flood relief area' },
+	{ name: 'Pindi Bhatiyan Hafiz Abad', x: 72, y: 35, description: 'Flood relief area' },
+	{ name: 'Shangla', x: 70, y: 12, description: 'Flood relief area' },
+	{ name: 'Shighar', x: 82, y: 8, description: 'Flood relief area' },
+	{ name: 'Sialkot', x: 77, y: 30, description: 'Flood relief area' },
+	{ name: 'Skardu', x: 85, y: 9, description: 'Flood relief area' },
+	{ name: 'Swat', x: 68, y: 10, description: 'Flood relief area' },
 ]
 
 export default function PakistanMap({ cities = defaultCities, className = '' }: PakistanMapProps) {
@@ -75,8 +92,8 @@ export default function PakistanMap({ cities = defaultCities, className = '' }: 
 												height='48'
 											>
 												<MapPin
-													className='w-12 h-12 text-pink-500'
-													strokeWidth={2}
+													className='w-12 h-12 text-white'
+													strokeWidth={1}
 												/>
 											</foreignObject>
 										</g>
